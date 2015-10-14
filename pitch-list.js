@@ -46,7 +46,7 @@ var PitchList = React.createClass({
     .done();
   },
 
-  goToPitch(pitch) {
+  goToPitch: function(pitch) {
       this.props.navigator.push({
           component: PitchDetail,
           passProps: {
