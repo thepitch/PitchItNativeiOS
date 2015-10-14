@@ -1,4 +1,7 @@
 var React = require('react-native');
+var Badge = require('./components/badge')
+var styles = require('./stylesheets/layout')
+var PitchDetail = require('./components/pitch-detail');
 
 var {
   AppRegistry,
@@ -12,11 +15,8 @@ var {
 
 var API_URL = 'http://localhost:3000/pitches';
 var PAGE_SIZE = 25;
-// var PARAMS = '?apikey=' + API_KEY + '&page_limit=' + PAGE_SIZE;
 var REQUEST_URL = API_URL;
 
-
-var PitchDetail = require('./pitch-detail');
 
 var PitchList = React.createClass({
   getInitialState: function() {
@@ -55,12 +55,30 @@ var PitchList = React.createClass({
       });
   },
 
-  renderRow(pitch) {
+  renderTitle: function() {
+    return (
+      <View style={styles.navContainer}>
+      <Text style={styles.header}>Pitch It</Text>
+      </View>
+      );
+  },
+
+  renderPitch: function(pitch) {
       return (
           <TouchableHighlight onPress={this.goToPitch.bind(this, pitch)}>
-              <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center', paddingTop: 5, paddingBottom: 5, backgroundColor: '#fff', marginBottom: 1 }}>
-                  <Text style={{ marginLeft: 5, marginRight: 5 }}>{pitch.title}</Text>
+            <View style={styles.container}>
+              <View style={styles.rightContainer}>
+                <Text style={styles.title}>{pitch.title}</Text>
+                <Text style={styles.tagline}>{pitch.tagline}</Text>
+                <Text style={styles.authordate}>Submitted by {pitch.author}, {pitch.created_at}</Text>
+
+                <View style={[styles.row, styles.byline, styles.badge]}>
+                  <Badge>{pitch.vote_count} votes</Badge><Badge>Comments: {pitch.comment_count}</Badge>
+                </View>
+
+                <View style={styles.separator}/>
               </View>
+            </View>
           </TouchableHighlight>
       );
   },
@@ -68,35 +86,14 @@ var PitchList = React.createClass({
   render() {
       return (
           <View style={{ flex: 1, backgroundColor: '#ddd' }}>
-              <Text style={{ marginTop: 60, marginLeft: 5, marginRight: 5, marginBottom: 10 }}>Select a pitch</Text>
               <ListView
+                  renderSectionHeader={this.renderTitle}
                   dataSource={this.state.dataSource}
-                  renderRow={this.renderRow} />
+                  renderRow={this.renderPitch}
+                  />
           </View>
       );
   }
-
 });
-
-var styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-});
-
-
 
 module.exports = PitchList;
