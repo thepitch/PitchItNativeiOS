@@ -11,9 +11,6 @@ var {
 } = React;
 
 var API_URL = 'http://localhost:3000/pitches';
-var PAGE_SIZE = 25;
-// var PARAMS = '?apikey=' + API_KEY + '&page_limit=' + PAGE_SIZE;
-var REQUEST_URL = API_URL;
 
 
 var PitchDetail = require('./pitch-detail');
@@ -34,7 +31,7 @@ var PitchList = React.createClass({
   },
 
   fetchData: function() {
-    fetch(REQUEST_URL)
+    fetch(API_URL)
     .then((response) => response.json())
     .then((responseData) => {
       this.setState({
