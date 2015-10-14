@@ -1,5 +1,6 @@
 var React = require('react-native');
 var Badge = require('./components/badge')
+var TabBar = require('./components/TabBar')
 var styles = require('./stylesheets/layout')
 var PitchDetail = require('./components/pitch-detail');
 
@@ -14,8 +15,6 @@ var {
 } = React;
 
 var API_URL = 'http://localhost:3000/pitches';
-var PAGE_SIZE = 25;
-var REQUEST_URL = API_URL;
 
 
 var PitchList = React.createClass({
@@ -34,7 +33,7 @@ var PitchList = React.createClass({
   },
 
   fetchData: function() {
-    fetch(REQUEST_URL)
+    fetch(API_URL)
     .then((response) => response.json())
     .then((responseData) => {
       this.setState({
@@ -89,8 +88,8 @@ var PitchList = React.createClass({
               <ListView
                   renderSectionHeader={this.renderTitle}
                   dataSource={this.state.dataSource}
-                  renderRow={this.renderPitch}
-                  />
+                  renderRow={this.renderPitch}/>
+                  <TabBar/>
           </View>
       );
   }

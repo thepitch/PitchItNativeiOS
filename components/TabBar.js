@@ -1,6 +1,9 @@
 'use strict'
 
 var React = require('react-native');
+var style = require('../stylesheets/pitch-show');
+
+var { StyleSheet } = React;
 
 var {
   StyleSheet,
@@ -9,7 +12,12 @@ var {
   View,
 } = React;
 
-var styles = StyleSheet.create({
+var TabBar = React.createClass ({
+  render(){
+    return (
+      <Text>Hello</Text>
+      )
+  }
 });
 
-module.exports = styles
+module.exports = TabBar

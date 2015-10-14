@@ -1,5 +1,6 @@
 var React = require('react-native');
-var styles = require('../stylesheets/pitch-show');
+var styles = require('../stylesheets/layout')
+
 
 var {
     View,
@@ -22,6 +23,7 @@ var PitchDetail = React.createClass({
                     <Text>{this.props.pitch.author}</Text>
 
                 <TouchableHighlight onPress={this.goBack}>
+                    <Text>Click to go back</Text>
                 </TouchableHighlight>
                 </View>
                 </View>
