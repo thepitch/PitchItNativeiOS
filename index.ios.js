@@ -1,11 +1,6 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- */
 'use strict';
 
 var React = require('react-native');
-
 
 var {
   AppRegistry,
@@ -25,10 +20,6 @@ var PitchItNative = React.createClass({
           renderScene={(route, navigator) => {
               return <route.component navigator={navigator} {...route.passProps} />;
           }} />
-
-
-
-
     );
   }
 });

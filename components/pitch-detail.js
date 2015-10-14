@@ -1,5 +1,8 @@
 var React = require('react-native');
 var Subcomments = require('./pitch-subcomments')
+
+var styles = require('../stylesheets/pitch-show');
+
 var {
     View,
     Text,
@@ -50,9 +53,6 @@ var PitchDetail = React.createClass({
     render() {
         return (
             <View style={{ flex: 1, backgroundColor: '#ddd', alignItems: 'center', justifyContent: 'center' }}>
-                <TouchableHighlight onPress={this.goBack}>
-                    <Text>Click to go back</Text>
-                </TouchableHighlight>
 
                 <Text>Title: {this.props.pitch.title}</Text>
                 <Text>Tagline: {this.props.pitch.tagline}</Text>
@@ -62,6 +62,7 @@ var PitchDetail = React.createClass({
                 <Text>Votes: {this.props.pitch.vote_count}</Text>
                 <Text>Comments: {this.props.pitch.comment_count}</Text>
                 <ListView dataSource={this.state.dataSource} renderRow={this.renderComments} />
+
             </View>
         );
     }
