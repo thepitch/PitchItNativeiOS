@@ -66,6 +66,22 @@ var PitchItNative = React.createClass({
           }}>
           {this.renderProfileView()}
         </TabBarIOS.Item>
+        <TabBarIOS.Item
+          title='News'
+          selected={this.state.selectedTab === 'news'}
+          iconName={'news'}
+          iconSize={20}
+          onPress={() => {
+            if (this.state.selectedTab !== 'news') {
+              this.setState({
+                selectedTab: 'news'
+              });
+            } else if (this.state.selectedTab === 'news') {
+              this.refs.newsRef.popToTop();
+            }
+          }}>
+          {this.renderNewsView()}
+        </TabBarIOS.Item>
       </TabBarIOS>
       )
   },
@@ -102,9 +118,23 @@ var PitchItNative = React.createClass({
           component: PitchList,
         }} />
     );
-  }
+  },
+  renderNewsView: function() {
+      return (
+        <Navigator
+          ref={(navigator) => { this.navigator = navigator; }}
+          renderScene={(route, navigator) => {
+                return <route.component navigator={navigator} {...route.passProps} />;
+            }}
+          ref='newsRef'
+          initialRoute={{
+            title: 'News',
+            component: PitchList,
+            passProps: {}
+          }} />
+      );
+    },
 });
-
 var styles = StyleSheet.create({
   container: {
     flex: 1,
