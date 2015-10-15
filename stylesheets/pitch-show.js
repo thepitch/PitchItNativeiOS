@@ -4,8 +4,6 @@ var { StyleSheet } = React;
 
 var styles = StyleSheet.create({
   container: {
-    flex: 1,
-    flexDirection: 'row',
     justifyContent: 'space-between',
     alignSelf: 'center'
   },
@@ -25,12 +23,10 @@ var styles = StyleSheet.create({
   voteBox: {
     marginTop: 20,
     position: ('absolute'),
-    left: 0,
+    left: 5,
   },
   containerBox: {
     backgroundColor: '#FFFFFF',
-    paddingTop: 15,
-    marginLeft: 15,
   },
   commentContainer: {
     marginTop: 15
@@ -38,14 +34,14 @@ var styles = StyleSheet.create({
   commentHeader: {
     fontSize: 12,
     fontWeight: 'bold',
-    flexWrap: 'wrap'
+    backgroundColor: '#F3F3F3',
+    padding: 5
   },
   commentSubHeader: {
     alignSelf: 'flex-end',
     fontSize: 12
   },
   pitchHeader: {
-    flex: 1,
     borderLeftColor: 'grey',
     borderLeftWidth: 1,
     padding: 15,
@@ -70,15 +66,26 @@ var styles = StyleSheet.create({
   },
   firstLevelComment: {
     fontSize: 12,
+    marginLeft: 15
   },
   secondLevelComment: {
     fontSize: 10,
-    marginLeft: 15,
+    color: 'grey'
   },
   text: {
     fontSize: 12,
     marginBottom: 15,
-    marginTop: 15
+    marginTop: 15,
+    marginLeft: 15,
+  },
+  separator: {
+    height: 2,
+    backgroundColor: '#F3F3F3'
+  },
+  subSeparator: {
+    height: 1,
+    marginTop: 15,
+    backgroundColor: '#DDDDDD'
   },
 });
 

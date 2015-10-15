@@ -4,7 +4,7 @@ var { StyleSheet } = React;
 var styles = StyleSheet.create({
   navContainer: {
     backgroundColor: '22B7E0',
-    height: 80,
+    height: 70,
     alignItems: 'center',
   },
   header: {

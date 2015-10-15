@@ -2,6 +2,7 @@ var React = require('react-native');
 var Badge = require('./components/badge')
 var TabBar = require('./components/TabBar')
 var styles = require('./stylesheets/layout')
+var Header = require('./components/header')
 var PitchDetail = require('./components/pitch-detail');
 
 var {
@@ -54,14 +55,6 @@ var PitchList = React.createClass({
       });
   },
 
-  renderTitle: function() {
-    return (
-      <View style={styles.navContainer}>
-      <Text style={styles.header}>Pitch It</Text>
-      </View>
-      );
-  },
-
   renderPitch: function(pitch) {
       if (pitch.comment_count > 1) {
         var comment = 'comment'
@@ -75,11 +68,9 @@ var PitchList = React.createClass({
                 <Text style={styles.title}>{pitch.title}</Text>
                 <Text style={styles.authordate}>Submitted by {pitch.author}, {pitch.created_at}</Text>
                 <Text style={styles.tagline}>{pitch.tagline}</Text>
-
                 <View style={[styles.row, styles.byline, styles.badge]}>
                   <Badge>{pitch.vote_count} votes</Badge><Badge>{pitch.comment_count} {comment} </Badge>
                 </View>
-
                 <View style={styles.separator}/>
               </View>
             </View>
@@ -89,13 +80,15 @@ var PitchList = React.createClass({
 
   render() {
       return (
+          <View>
+          <Header/>
           <View style={{ flex: 1, backgroundColor: '#ddd' }}>
               <ListView
-                  renderSectionHeader={this.renderTitle}
                   dataSource={this.state.dataSource}
                   renderRow={this.renderPitch}/>
                   <TabBar/>
           </View>
+        </View>
       );
   }
 });
