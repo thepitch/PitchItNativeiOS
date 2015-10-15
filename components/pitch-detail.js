@@ -79,7 +79,7 @@ var PitchDetail = React.createClass({
           <Header/>
             <View style={styles.container}>
               <View style={styles.voteBox}>
-                <Text style={styles.votesBadge}>{this.props.pitch.vote_count}
+                <Text style={styles.votesBadge}>{this.props.pitch.vote_count} {'\n'}
                   <Text style={{fontSize: 12}}>votes</Text>
                 </Text>
               </View>

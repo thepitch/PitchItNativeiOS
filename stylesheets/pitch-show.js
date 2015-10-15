@@ -16,7 +16,7 @@ var styles = StyleSheet.create({
     borderWidth: 1,
     width: 50,
     height: 60,
-    fontSize: 40,
+    fontSize: 35,
     textAlign: 'center',
     paddingBottom: 65
   },

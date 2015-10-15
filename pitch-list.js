@@ -56,7 +56,7 @@ var PitchList = React.createClass({
   },
 
   renderPitch: function(pitch) {
-      if (pitch.comment_count > 1) {
+      if (pitch.comment_count == 1) {
         var comment = 'comment'
       } else {
         var comment = 'comments'
