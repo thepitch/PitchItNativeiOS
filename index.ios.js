@@ -14,15 +14,11 @@ var {
 var PitchList = require('./pitch-list');
 
 var PitchItNative = React.createClass({
-  getInitialState: function() {
-    return { selectedTab: 'pitches' }
-  },
-
 
   renderScene: function(route, navigator) {
     var Component = route.component;
     return (
-      <View>
+      <View style={styles.container}>
         <Component
           route={route}
           navigator={navigator}
@@ -33,65 +29,11 @@ var PitchItNative = React.createClass({
 
   render: function() {
     return (
-      <TabBarIOS>
-        <TabBarIOS.Item
-          title='Home'
-          selected={this.state.selectedTab === 'pitches'}
-          iconName={'home'}
-          iconSize={20}
-          onPress={() => {
-            if (this.state.selectedTab !== 'pitches') {
-              this.setState({
-                selectedTab: 'pitches'
-              });
-            } else if (this.state.selectedTab === 'pitches') {
-              this.refs.pitchRef.popToTop();
-            }
-          }}>
-          {this.renderPitchList()}
-        </TabBarIOS.Item>
-        <TabBarIOS.Item
-          title='Profile'
-          selected={this.state.selectedTab === 'profile'}
-          iconName={'profile'}
-          iconSize={20}
-          onPress={() => {
-            if (this.state.selectedTab !== 'profile') {
-              this.setState({
-                selectedTab: 'profile'
-              });
-            } else if (this.state.selectedTab === 'profile') {
-              this.refs.profileRef.popToTop();
-            }
-          }}>
-          {this.renderProfileView()}
-        </TabBarIOS.Item>
-      </TabBarIOS>
-      )
-  },
-
-
-
-
-  renderPitchList: function() {
-    return (
       <Navigator
         ref={(navigator) => { this.navigator = navigator; }}
-        renderScene={this.renderScene}
-        ref='pitchRef'
-        initialRoute={{
-          title: 'Home',
-          component: PitchList,
-        }} />
-    );
-  },
-
-  renderProfileView: function() {
-    return (
-      <Navigator
-        ref={(navigator) => { this.navigator = navigator; }}
-        renderScene={this.renderScene}
-        ref='profileRef'
+        renderScene={(route, navigator) => {
+              return <route.component navigator={navigator} {...route.passProps} />;
+          }}
         initialRoute={{
           title: 'Home',
           component: PitchList,
