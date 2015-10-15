@@ -54,24 +54,37 @@ var PitchDetail = React.createClass({
       renderComments: function(comment){
         return(
             <View style={styles.commentContainer}>
+                <Text style={styles.commentHeader}>Comments ({this.props.pitch.comment_count})</Text>
                 <Text style={styles.firstLevelComment}>{comment.content}</Text>
+                <Text style={styles.commentSubHeader}>Subcomments</Text>
                 <Subcomments subcomments={comment.subcomments} />
             </View>
             )
       },
     render() {
         return (
-            <View style={styles.commentContainer}>
-                <Text style={styles.titleText}>Title: {this.props.pitch.title}</Text>
-                <Text style={styles.authorName}>By {this.props.pitch.author}</Text>
-                <Text style={styles.taglineText}>Tagline: {this.props.pitch.tagline}</Text>
+            <View style={styles.containerBox}>
+                <View style={styles.container}>
+                <View>
+                  <Text style={styles.votesBadge}>Votes: {this.props.pitch.vote_count} </Text>
+                </View>
+
+                <View>
+                  <Text style={styles.titleHeader}>{this.props.pitch.title}</Text>
+                  <Text style={styles.authorName}>By {this.props.pitch.author}</Text>
+                </View>
+
+                </View>
+
+              <View>
+                <Text style={styles.taglineText}>{this.props.pitch.tagline}</Text>
                 <Text style={styles.text}>Description: {this.props.pitch.description}</Text>
                 <View style={layoutStyles.separator}/>
-                <Text style={styles.headerText}>Comments</Text>
+
                 <ListView
                   dataSource={this.state.dataSource}
                   renderRow={this.renderComments} />
-                <Text style={styles.text}>Votes: {this.props.pitch.vote_count} - Comments: {this.props.pitch.comment_count}</Text>
+              </View>
             </View>
         );
     }

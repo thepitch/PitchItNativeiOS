@@ -21,7 +21,7 @@ var styles = StyleSheet.create({
     padding: 0,
     backgroundColor: '#dddddd',
     borderColor: '#dddddd',
-    borderRadius: 10,
+    borderRadius: 5,
     borderWidth: 4,
   },
   voteText: {

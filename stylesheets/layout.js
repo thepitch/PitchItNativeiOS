@@ -37,11 +37,12 @@ var styles = StyleSheet.create({
   tagline: {
     textAlign: 'center',
     fontSize: 12,
-    color: 'grey'
+    marginTop: 10
   },
   authordate: {
     fontStyle: 'italic',
     alignSelf: 'center',
+    color: 'grey',
     fontSize: 10,
   },
   listView: {

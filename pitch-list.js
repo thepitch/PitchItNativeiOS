@@ -63,16 +63,21 @@ var PitchList = React.createClass({
   },
 
   renderPitch: function(pitch) {
+      if (pitch.comment_count > 1) {
+        var comment = 'comment'
+      } else {
+        var comment = 'comments'
+      }
       return (
           <TouchableHighlight onPress={this.goToPitch.bind(this, pitch)}>
             <View style={styles.container}>
               <View style={styles.rightContainer}>
                 <Text style={styles.title}>{pitch.title}</Text>
-                <Text style={styles.tagline}>{pitch.tagline}</Text>
                 <Text style={styles.authordate}>Submitted by {pitch.author}, {pitch.created_at}</Text>
+                <Text style={styles.tagline}>{pitch.tagline}</Text>
 
                 <View style={[styles.row, styles.byline, styles.badge]}>
-                  <Badge>{pitch.vote_count} votes</Badge><Badge>Comments: {pitch.comment_count}</Badge>
+                  <Badge>{pitch.vote_count} votes</Badge><Badge>{pitch.comment_count} {comment} </Badge>
                 </View>
 
                 <View style={styles.separator}/>
