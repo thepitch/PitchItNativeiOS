@@ -1,25 +1,43 @@
 'use strict';
 
 var React = require('react-native');
-
+var TabBar = require('./components/TabBar')
 var {
   AppRegistry,
   StyleSheet,
   Text,
   Navigator,
+  TabBarIOS,
   View,
 } = React;
 
 var PitchList = require('./pitch-list');
 
 var PitchItNative = React.createClass({
+
+  renderScene: function(route, navigator) {
+    var Component = route.component;
+    return (
+      <View style={styles.container}>
+        <Component
+          route={route}
+          navigator={navigator}
+          topNavigator={navigator} />
+      </View>
+      )
+  },
+
   render: function() {
     return (
       <Navigator
-          initialRoute={{ component: PitchList }}
-          renderScene={(route, navigator) => {
+        ref={(navigator) => { this.navigator = navigator; }}
+        renderScene={(route, navigator) => {
               return <route.component navigator={navigator} {...route.passProps} />;
-          }} />
+          }}
+        initialRoute={{
+          title: 'Home',
+          component: PitchList,
+        }} />
     );
   }
 });
@@ -44,3 +62,4 @@ var styles = StyleSheet.create({
 });
 
 AppRegistry.registerComponent('PitchItNative', () => PitchItNative);
+module.exports = PitchItNative;

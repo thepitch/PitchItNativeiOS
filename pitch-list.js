@@ -2,7 +2,7 @@ var React = require('react-native');
 var Badge = require('./components/badge')
 var styles = require('./stylesheets/layout')
 var PitchDetail = require('./components/pitch-detail');
-
+var TabBar = require('./components/TabBar')
 var {
   AppRegistry,
   StyleSheet,
@@ -10,6 +10,7 @@ var {
   Navigator,
   View,
   ListView,
+  TabBarIOS,
   TouchableHighlight
 } = React;
 
@@ -87,8 +88,8 @@ var PitchList = React.createClass({
               <ListView
                   renderSectionHeader={this.renderTitle}
                   dataSource={this.state.dataSource}
-                  renderRow={this.renderPitch}
-                  />
+                  renderRow={this.renderPitch} />
+
           </View>
       );
   }
