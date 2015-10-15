@@ -45,15 +45,6 @@ var PitchDetail = React.createClass({
       this.props.navigator.pop();
     },
 
-
-    renderTitle: function() {
-      return (
-        <View layoutStyles={styles.navContainer}>
-          <Text layoutStyles={styles.header}>Pitch It</Text>
-        </View>
-        )
-    },
-
     renderTitle: function() {
       return (
         <View style={stylesLayout.navContainer}>

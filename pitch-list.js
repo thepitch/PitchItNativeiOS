@@ -80,15 +80,13 @@ var PitchList = React.createClass({
 
   render() {
       return (
-          <View>
-          <Header/>
           <View style={{ flex: 1, backgroundColor: '#ddd' }}>
+          <Header/>
               <ListView
                   dataSource={this.state.dataSource}
                   renderRow={this.renderPitch}/>
                   <TabBar/>
           </View>
-        </View>
       );
   }
 });
