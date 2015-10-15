@@ -26,7 +26,10 @@ var Subcomments = React.createClass({
   },
   renderRow(subcomment) {
       return (
+        <View>
         <Text style={styles.subcommentText}>{subcomment.content}</Text>
+        <Text style={{color: 'grey', fontSize: 10, alignSelf: 'flex-end'}}>Submitted by {subcomment.author} {subcomment.created_at}</Text>
+        </View>
       );
   },
     render() {
@@ -42,8 +45,7 @@ var styles = StyleSheet.create({
   subcommentText: {
     fontSize: 10,
     marginLeft: 15,
-    marginTop: 15
-
+    marginTop: 15,
   }
 });
 
