@@ -4,7 +4,8 @@ var {
     View,
     Text,
     ListView,
-    TouchableHighlight
+    TouchableHighlight,
+    StyleSheet
 } = React;
 
 var Subcomments = React.createClass({
@@ -25,7 +26,7 @@ var Subcomments = React.createClass({
   },
   renderRow(subcomment) {
       return (
-                  <Text>{subcomment.content}</Text>
+        <Text style={styles.subcommentText}>{subcomment.content}</Text>
       );
   },
     render() {
@@ -35,6 +36,15 @@ var Subcomments = React.createClass({
                   renderRow={this.renderRow} />
         );
     }
+});
+
+var styles = StyleSheet.create({
+  subcommentText: {
+    fontSize: 10,
+    marginLeft: 15,
+    marginTop: 15
+
+  }
 });
 
 module.exports = Subcomments;

@@ -36,7 +36,8 @@ var styles = StyleSheet.create({
   },
   tagline: {
     textAlign: 'center',
-    fontSize: 12
+    fontSize: 12,
+    color: 'grey'
   },
   authordate: {
     fontStyle: 'italic',
